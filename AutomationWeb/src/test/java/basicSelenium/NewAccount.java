@@ -7,6 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.sql.Driver;
+import java.time.Duration;
+import java.util.Date;
 
 public class NewAccount {
 
@@ -28,7 +34,7 @@ public class NewAccount {
     public void newAccount() throws InterruptedException {
 
         String fullName="julian barbieri";
-        String email= "julia@juli.com";
+        String email= "mail"+new Date().getTime()+"@mail.com";
         String password ="julian";
         String newPassword = "juli";
 
@@ -36,29 +42,28 @@ public class NewAccount {
 
         // click sign up free button
         driver.findElement(By.xpath("//img[contains(@src,'/Images/design/pagesignup.png')]")).click();
-        Thread.sleep(1000);
 
         // set full name
         driver.findElement(By.id("ctl00_MainContent_SignupControl1_TextBoxFullName")).sendKeys(fullName);
-        Thread.sleep(1000);
 
         // set email
         driver.findElement(By.id("ctl00_MainContent_SignupControl1_TextBoxEmail")).sendKeys(email);
-        Thread.sleep(1000);
 
         //set password
         driver.findElement(By.id("ctl00_MainContent_SignupControl1_TextBoxPassword")).sendKeys(password);
-        Thread.sleep(1000);
 
         //check checkbox agreement ctl00_MainContent_SignupControl1_CheckBoxTerms
         driver.findElement(By.id("ctl00_MainContent_SignupControl1_CheckBoxTerms")).click();
-        Thread.sleep(1000);
 
         //click sign up button
         driver.findElement(By.id("ctl00_MainContent_SignupControl1_ButtonSignup")).click();
-        Thread.sleep(1000);
 
         //VERIFICACIONES NEW ACCOUNT
+
+        //explicit wait button
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Logout']")));
+
         Assertions.assertTrue(driver.findElement(By.xpath("//a[text()='Logout']")).isDisplayed(),"ERROR!! no se pudo crear la cuenta");
 
         //CAMBIAR CONTRASEÑA
@@ -102,8 +107,7 @@ public class NewAccount {
         Thread.sleep(2000);
 
         // verificacion
-        Assertions.assertTrue(driver.findElement(By.xpath("//a[text()='Logout']")).isDisplayed(),"ERROR!! no se pudo iniciar sesion");
-
+        Assertions.assertTrue(driver.findElement(By.xpath("//*[@id=\"ctl00_HeaderTopControl1_LinkButtonLogout\"]")).isDisplayed(),"ERROR!! no se pudo iniciar sesion");
 
 
     }
