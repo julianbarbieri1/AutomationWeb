@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class CRUDItem {
@@ -77,11 +78,13 @@ public class CRUDItem {
         driver.findElement(By.id("NewProjNameButton")).click();
 
         //Thread.sleep(2000);
-        /*wait.until(ExpectedConditions.textToBe(By.xpath("//li[last()]//td[text()='" + nameProj + "']"), nameProj));
-        String actualResult = driver.findElement(By.xpath("//li[last()]//td[text()='" + nameProj + "']")).getText();
-        String expectedResult = nameProj;
-        Assertions.assertEquals(expectedResult, actualResult, "ERROR no se creo el project");
-*/
+
+        //verifico proyecto creado
+
+        wait.until(ExpectedConditions.textToBe(By.xpath("//li[last()]//td[text()='" + nameProj + "']"), nameProj));
+        String actualResult1 = driver.findElement(By.xpath("//li[last()]//td[text()='" + nameProj + "']")).getText();
+        String expectedResult1 = nameProj;
+        Assertions.assertEquals(expectedResult1, actualResult1, "ERROR no se creo el project");
 
         String itemName = "Item";
 
@@ -98,87 +101,52 @@ public class CRUDItem {
 
         //click add button id = NewItemAddButton
         driver.findElement(By.id("NewItemAddButton")).click();
-        Thread.sleep(3000);
 
+        //verificacion el item creado
+/*
+        wait.until(ExpectedConditions.textToBe(By.xpath("//li[last()]//div[text()='" + itemName + "']"), itemName));
+        String actualResult2 = driver.findElement(By.xpath("//li[last()]//td[text()='" + itemName + "']")).getText();
+        String expectedResult2 = itemName;
+        Assertions.assertEquals(expectedResult2, actualResult2, "ERROR no se pudo crear el item");
+*/
         //UPDATE ITEM
 
         String newItemName = "New Item";
 
-        /*click options of item created //li[last()]//img[@class='ItemMenu']
-        click edit //ul[@id='itemContextMenu']//a[text()='Edit']
-        sendkeys new item name //li[last()]//div[text()='Item']
-        click enter key //ul[@id='itemContextMenu']//a[text()='Edit']*/
-
-        //click options of item created //li[last()]//img[@class='ItemMenu']
-        driver.findElement(By.xpath("//li[last()]//img[@class='ItemMenu']")).click();
-
-        //click edit //ul[@id='itemContextMenu']//a[text()='Edit']
-        driver.findElement(By.xpath("//ul[@id='itemContextMenu']//a[text()='Edit']")).click();
+        //click on item created //li[last()]//div[text()='Item']
+        driver.findElement(By.xpath("//li[last()]//div[text()='" + itemName + "']")).click();
 
         //clear
-        driver.findElement(By.xpath("//ul[@id='itemContextMenu']//a[text()='Edit']")).clear();
+        driver.findElement(By.xpath("//textarea[@id='ItemEditTextbox']")).clear();
 
-        //sendkeys new item name //li[last()]//div[text()='Item']
-        driver.findElement(By.xpath("//li[last()]//div[text()='Item']")).sendKeys(newItemName);
-
-        //*******************
-
-        //click item created xpath = //li[last()]//div[text()='Item']
-        driver.findElement(By.xpath("//li[last()]//div[text()='"+ itemName +"']")).click();
-        Thread.sleep(1000);
-
-        //clear the item
-        driver.findElement(By.xpath("//li[last()]//div[text()='Item']")).clear();
-        Thread.sleep(1000);
-
-        //set new item name
-        driver.findElement(By.xpath("//li[last()]//div[text()='"+ itemName +"']")).sendKeys(newItemName);
-        Thread.sleep(1000);
-
-        //click enter (hacerlo con el actions) PENDIENTE
-        driver.findElement(By.xpath("//li[last()]//div[text()='"+ itemName +"']")).sendKeys(Keys.ENTER);
+        // textarea[@id='ItemEditTextbox']
+        driver.findElement(By.xpath("//textarea[@id='ItemEditTextbox']")).sendKeys(newItemName + Keys.ENTER);
 
 
+        //verifico
+        /*wait.until(ExpectedConditions.textToBe(By.xpath("//li[last()]//div[text()='" + newItemName + "']"), newItemName));
+        String actualResult = driver.findElement(By.xpath("//li[last()]//td[text()='" + newItemName + "']")).getText();
+        String expectedResult = newItemName;
+        Assertions.assertEquals(expectedResult, actualResult, "ERROR no se pudo actualizar el item");
+*/
 
         //DELETE
 
+        //click on item created //li[last()]//div[text()='Item']
+        driver.findElement(By.xpath("//li[last()]//div[text()='" + newItemName + "']")).click();
+
         //click menu button del item //li[last()]//img[@style='display: inline;']
-        driver.findElement(By.xpath("//li[last()]//img[@style='display: inline;']")).click();
+        driver.findElement(By.xpath("//li[last()]//img[@class='ItemMenu']")).click();
 
         //click delete button li[last()]//a[text()='Delete']
-        driver.findElement(By.xpath("li[last()]//a[text()='Delete']")).click();
-
+        driver.findElement(By.xpath("//li[last()]//a[@href='#delete']")).click();
+        Thread.sleep(2000);
         //verifico
 
-        /*
-         * UPDATE
-         * */
-
-        /*String newNameProj = "UPDATE" + new Date().getTime();
-        driver.findElement(By.xpath("//li[last()]//td[text()='" + nameProj + "']")).click();
-        driver.findElement(By.xpath("//div[contains(@style,'block')]/img")).click();
-        driver.findElement(By.xpath(" //ul[@id=\"projectContextMenu\"]//a[text()='Edit']")).click();
-        driver.findElement(By.id("ItemEditTextbox")).clear();
-        driver.findElement(By.id("ItemEditTextbox")).sendKeys(newNameProj);
-        driver.findElement(By.xpath("//td/div[@id=\"ProjectEditDiv\"]/img[@id='ItemEditSubmit']")).click();
-        //Thread.sleep(2000);
-        wait.until(ExpectedConditions.textToBe(By.xpath("//li[last()]//td[text()='" + newNameProj + "']"), newNameProj));
-        actualResult = driver.findElement(By.xpath("//li[last()]//td[text()='" + newNameProj + "']")).getText();
-        expectedResult = newNameProj;
-        Assertions.assertEquals(expectedResult, actualResult, "ERROR no se actualizo el project");
-
-        /*
-         * DELETE
-         *
-        driver.findElement(By.xpath("//li[last()]//td[text()='" + newNameProj + "']")).click();
-        driver.findElement(By.xpath("//div[contains(@style,'block')]/img")).click();
-        driver.findElement(By.id("ProjShareMenuDel")).click();
-        driver.switchTo().alert().accept();
-        //Thread.sleep(2000);
-        wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.xpath("//li[last()]//td"), newNameProj)));
-        actualResult = driver.findElement(By.xpath("//li[last()]//td")).getText();
-        expectedResult = newNameProj;
-        Assertions.assertNotEquals(expectedResult, actualResult, "ERROR no se elimino el project");
-        */
+       /* wait.until(ExpectedConditions.textToBe(By.xpath("//li[last()]//div[text()='" + newItemName + "']"), newItemName));
+        String actualResult3 = driver.findElement(By.xpath("//li[last()]//td[text()='" + newItemName + "']")).getText();
+        String expectedResult3 = newItemName;
+        Assertions.assertNotEquals(expectedResult3, actualResult3, "ERROR no se pudo actualizar el item");
+*/
     }
 }
