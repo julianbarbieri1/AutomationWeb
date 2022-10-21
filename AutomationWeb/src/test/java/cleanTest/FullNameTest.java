@@ -10,9 +10,10 @@ import java.util.Date;
 public class FullNameTest extends TestBaseTodoLy{
 
     @Test
-    public void verifyFullNameTest(){
+    public void verifyFullNameTest() throws InterruptedException {
 
         String newFullName = "new full name" + new Date().getTime();
+
         //LOGIN
         mainPage.loginButton.click();
         loginModal.emailTextBox.setText("pepe@pepe.com");
@@ -21,15 +22,16 @@ public class FullNameTest extends TestBaseTodoLy{
 
         //CHANGE FULL NAME
         menuSection.settingsButton.click();
+        Thread.sleep(5000);
         settingsModal.fullNameTextBox.setText(newFullName);
         settingsModal.okButton.click();
         menuSection.settingsButton.click();
 
-        //String actualResult = driver.findElement(By.id("FullNameInput")).getAttribute("value");
         String expectedResult = newFullName;
+        Thread.sleep(5000);
 
         //VERIFY
-        Assertions.assertEquals(settingsModal.fullNameTextBox.getAttribute(newFullName),
+        Assertions.assertEquals(newFullName, settingsModal.fullNameTextBox.getAttribute("value"),
                 "ERROR full name was not successfully changed");
 
     }
