@@ -25,7 +25,7 @@ public class FullNameTest extends TestBaseTodoLy{
         settingsModal.okButton.click();
         menuSection.settingsButton.click();
 
-        String actualResult = driver.findElement(By.id("FullNameInput")).getAttribute("value");
+        //String actualResult = driver.findElement(By.id("FullNameInput")).getAttribute("value");
         String expectedResult = newFullName;
 
         //VERIFY
