@@ -2,10 +2,7 @@ package cleanTest;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import pages.todo.Ly.LoginModal;
-import pages.todo.Ly.MainPage;
-import pages.todo.Ly.MenuSection;
-import pages.todo.Ly.SettingsModal;
+import pages.todo.Ly.*;
 import singletonSession.Session;
 
 public class TestBaseTodoLy {
@@ -13,6 +10,10 @@ public class TestBaseTodoLy {
     public LoginModal loginModal= new LoginModal();
     public MenuSection menuSection= new MenuSection();
     public SettingsModal settingsModal = new SettingsModal();
+
+    public ProjectsSection projectsSection = new ProjectsSection();
+
+    public ItemsSection itemsSection = new ItemsSection();
 
     @BeforeEach
     public void setup(){
