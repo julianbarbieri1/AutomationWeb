@@ -22,13 +22,11 @@ public class FullNameTest extends TestBaseTodoLy{
 
         //CHANGE FULL NAME
         menuSection.settingsButton.click();
-        Thread.sleep(5000);
         settingsModal.fullNameTextBox.setText(newFullName);
         settingsModal.okButton.click();
         menuSection.settingsButton.click();
 
         String expectedResult = newFullName;
-        Thread.sleep(5000);
 
         //VERIFY
         Assertions.assertEquals(newFullName, settingsModal.fullNameTextBox.getAttribute("value"),
