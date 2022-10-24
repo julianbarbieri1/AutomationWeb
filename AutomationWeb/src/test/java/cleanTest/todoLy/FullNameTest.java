@@ -1,9 +1,7 @@
-package cleanTest;
+package cleanTest.todoLy;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import pages.todo.Ly.SettingsModal;
 
 import java.util.Date;
 
@@ -26,7 +24,7 @@ public class FullNameTest extends TestBaseTodoLy{
         settingsModal.okButton.click();
         menuSection.settingsButton.click();
 
-        String expectedResult = newFullName;
+
 
         //VERIFY
         Assertions.assertEquals(newFullName, settingsModal.fullNameTextBox.getAttribute("value"),

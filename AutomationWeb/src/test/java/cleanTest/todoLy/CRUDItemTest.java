@@ -1,14 +1,10 @@
-package cleanTest;
+package cleanTest.todoLy;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
-import java.util.Date;
 
 public class CRUDItemTest extends TestBaseTodoLy {
 
-    String newProject = "New Project " + new Date().getTime();
+    String newProject = "New Project";
     private String email = "pepe@pepe.com";
     private String pass = "pepe";
     private String item ="Item 1";
@@ -31,7 +27,7 @@ public class CRUDItemTest extends TestBaseTodoLy {
         projectsSection.addNewProjectButton.click();
         projectsSection.projectTextBox.setText(newProject);
         projectsSection.addProjButton.click();
-        //projectsSection.projectButton.click();
+        projectsSection.projectButton.click();
 
         //CREO ITEM
 /*
