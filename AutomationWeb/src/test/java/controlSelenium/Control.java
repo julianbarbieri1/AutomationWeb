@@ -49,6 +49,21 @@ public class Control {
         WebDriverWait wait = new WebDriverWait(Session.getInstance().getBrowser(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(this.locator));
     }
+    public void waitControl(By locator, int timeOut) throws InterruptedException {
+        Label test = new Label(this.locator); //subject
+        int i = 0;
+        do {
+            Thread.sleep(1000);
+            i++;
+            this.control.click(); //refresh
+        } while (!test.isControlDisplayed() || i <= timeOut);
+    }
+
+    public void waitTextToBePresent(String value)
+    {
+        WebDriverWait wait = new WebDriverWait(Session.getInstance().getBrowser(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(this.locator, value));
+    }
 
 
 }

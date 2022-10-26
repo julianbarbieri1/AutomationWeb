@@ -27,19 +27,22 @@ public class MailTest extends TestBaseYopmail{
         mainPage.sendToTextBox.setText(emailRecibido);
         mainPage.subjectTextBox.setText(subject);
         mainPage.emailBodyTextBox.setText(body);
-        mainPage.sendButton.waitClickable();
         mainPage.sendButton.click();
+        mainPage.sendButton.waitClickable();
+        
+        //Thread.sleep(2000);
+        //VERIFICACION
+        Assertions.assertTrue(mainPage.emailSend(),"ERROR no se envio el mail");
 
 
-        //Thread.sleep(5000);
-
+        //REFRESH
         Session.getInstance().getBrowser().switchTo().defaultContent();
 
         mainPage.refreshButton.click();
         mainPage.refreshButton.waitClickable();
 
-
         Session.getInstance().getBrowser().switchTo().frame("ifinbox");
+
         //VERIFICACION
         Assertions.assertTrue(mainPage.emailExist(emailRecibido,subject),"ERROR no se recibio el mail");
 

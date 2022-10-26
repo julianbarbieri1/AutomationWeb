@@ -20,10 +20,19 @@ public class MainPage {
 
     public boolean emailExist(String email, String subject){
 
-
         Label emailReceived = new Label(By.xpath("//span[text()='"+email+"' and @class='lmf']"));
         Label subjectReceived = new Label(By.xpath("//div[text()='"+subject+"' and @class='lms']"));
         if(emailReceived.isControlDisplayed() && subjectReceived.isControlDisplayed())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean emailSend(){
+
+        Label emailSend = new Label(By.xpath("//div[@id='msgpopmsg']"));
+        emailSend.waitTextToBePresent(emailSend.getText());
+        if(emailSend.isControlDisplayed())
             return true;
         else
             return false;
