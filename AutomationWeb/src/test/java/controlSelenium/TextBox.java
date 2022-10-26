@@ -13,6 +13,10 @@ public class TextBox extends Control {
         this.control.sendKeys(value);
     }
 
+    public void addText(String value){
+        this.findControl();
+        this.control.sendKeys(value);
+    }
 
     public String getAttribute(String value) {
         this.findControl();
