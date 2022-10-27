@@ -1,11 +1,14 @@
 package pages.examen2;
 
 import controlSelenium.Button;
+import controlSelenium.CheckBox;
 import controlSelenium.Label;
 import controlSelenium.TextBox;
 import org.openqa.selenium.By;
 
 public class ItemsSeccion {
+
+    public Button items = new Button(By.xpath("//ul[@class=\"items\"]/li"));
 
     public Button anadirTareaButton = new Button(By.xpath("//button[@class='plus_add_button']"));
 
@@ -29,9 +32,6 @@ public class ItemsSeccion {
         return (itemName.isControlDisplayed());
 
     }
-
-    public Button selectedTask = new Button(By.xpath("//ul//li[last()]//li[@aria-selected=\"false\"][last()]//div[@class='markdown_content task_content' and text()='Item 1']"));
-    public Button masAccionesButton = new Button(By.xpath("//ul//li[last()]//li[@aria-selected='false'][last()]//button[@aria-label='Más acciones de tarea']"));
 
     public Button getLastTaskByName(String taskName)
     {

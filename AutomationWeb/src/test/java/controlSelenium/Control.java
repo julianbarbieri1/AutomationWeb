@@ -20,6 +20,9 @@ public class Control {
     protected void findControl(){
         control= Session.getInstance().getBrowser().findElement(this.locator);
     }
+    public Integer findControls(){
+        return Session.getInstance().getBrowser().findElements(this.locator).size()-1;
+    }
 
     /**
      *

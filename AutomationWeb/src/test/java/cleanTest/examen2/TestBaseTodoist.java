@@ -9,6 +9,7 @@ import singletonSession.Session;
 
 public class TestBaseTodoist {
 
+    public DeleteSection deleteSection = new DeleteSection();
     public UpdateSection updateSection = new UpdateSection();
     public ItemsSeccion itemsSeccion = new ItemsSeccion();
 

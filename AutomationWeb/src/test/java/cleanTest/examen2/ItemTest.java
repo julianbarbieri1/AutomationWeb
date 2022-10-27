@@ -16,9 +16,6 @@ public class ItemTest extends TestBaseTodoist{
         String email = "julian@julian.com";
         String password = "Barbieri99";
         String taskName = "Item 1";
-        String taskNameUpdate = "Item 1 updated";
-
-        //String newProjectName = "Julian " + new Date().getTime();
 
 
         //LOGIN
@@ -53,25 +50,42 @@ public class ItemTest extends TestBaseTodoist{
 
         //click añadir tarea button to create
         itemsSeccion.createItemButton.click();
+        int numberOfItemsBefore = itemsSeccion.items.findControls();
 
         //Verificacion
 
-        Assertions.assertTrue(itemsSeccion.itemExist(taskName),"ERROR!! no se pudo iniciar sesion");
+        Assertions.assertTrue(itemsSeccion.itemExist(taskName),"ERROR!! no se pudo crear el item");
 
         //UPDATE ITEM
 
-        //itemsSeccion.getLastTaskByName(taskName).waitClickable();
         itemsSeccion.getLastTaskByName(taskName).click();
-        Thread.sleep(2000);
-        //updateSection.dueDateButton.waitClickable();
+        updateSection.ClosePopUpButton1.click();
+        updateSection.closePopUpButton2.click();
         updateSection.dueDateButton.click();
         updateSection.dueDateButtonSelected.click();
-        Thread.sleep(2000);
-        updateSection.prioridadButton.waitClickable();
         updateSection.prioridadButton.click();
         updateSection.prioridad2.click();
-
         updateSection.closeButton.click();
+
+
+
+       /* String actualResult = updateSection.dueDateButtonSelected.getAttribute("value");
+        String expectedResult =  itemsSeccion.hoyDueDateButton.getAttribute("value");
+        Assertions.assertNotEquals(actualResult,expectedResult,"ERROR, no se actualizo el item");
+*/
+        //DELETE ITEM
+
+        itemsSeccion.getLastTaskByName(taskName).click();
+        deleteSection.masAccionesButton.click();
+        deleteSection.eliminarButton.waitClickable();
+        deleteSection.eliminarButton.click();
+        deleteSection.confirmationButton.waitClickable();
+        deleteSection.confirmationButton.click();
+
+        //VERIFICACION
+
+        int numberOfItemsAfter = itemsSeccion.items.findControls();
+        Assertions.assertNotEquals(numberOfItemsBefore,numberOfItemsAfter,"ERROR, el item no fue eliminado");
 
         Thread.sleep(3000);
     }
