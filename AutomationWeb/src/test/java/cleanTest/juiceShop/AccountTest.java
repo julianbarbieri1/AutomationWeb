@@ -3,12 +3,14 @@ package cleanTest.juiceShop;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
+
 public class AccountTest extends TestBaseJuiceShop{
 
     @Test
     public void verifyAccountTest() throws InterruptedException {
 
-        String email = "pepe@pepe.com";
+        String email = "pepe"+new Date().getTime() +"@pepe.com";
         String pass = "Pepe,1234";
         String question = " Paternal grandmother's first name? ";
         String answer = "soledad";
