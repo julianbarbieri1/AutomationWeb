@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 public class HomePage {
 
+    public Button habitButton = new Button(By.xpath("//div[@class='mb-[20px]']//a[@href='#q/all/habit']"));
     public Button inboxButton = new Button(By.xpath("//button[@class='project-list-view-item-button drop-hover-effect px-[12px] relative h-full rounded-default flex items-center cursor-pointer group overflow-hidden text-left w-full bg-primary-10 dark:bg-grey-20']"));
 
     public Button buttonSelectedActions = new Button(By.xpath("//button[@data-selected='true']//div[@class='flex-none flex items-center min-w-[24px] justify-end relative z-0']"));

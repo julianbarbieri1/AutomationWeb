@@ -18,6 +18,7 @@ public class TestBaseTickTick {
 
     public HomePage homePage = new HomePage();
 
+    public HabitSection habitSection = new HabitSection();
     static String getAlphaNumericString(int n)
     {
 
