@@ -39,7 +39,7 @@ public class TickTickLoginTest extends TestBaseTickTick {
         homePage.logoUser.click();
         homePage.logOut.click();
 
-        Assertions.assertFalse(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude iniciar sesion");
+        Assertions.assertFalse(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude cerrar sesion");
 
     }
 
