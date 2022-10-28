@@ -31,7 +31,6 @@ public class TickTickHabitTest extends TestBaseTickTick {
         habitSection.saveButton.click();
 
         Assertions.assertTrue(habitSection.habitExist(habit), "ERROR, no se pudo crear el habito");
-
         Thread.sleep(3000);
     }
 }

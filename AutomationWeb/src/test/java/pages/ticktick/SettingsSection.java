@@ -1,6 +1,7 @@
 package pages.ticktick;
 
 import controlSelenium.Button;
+import controlSelenium.CheckBox;
 import controlSelenium.TextBox;
 import org.openqa.selenium.By;
 
@@ -13,6 +14,13 @@ currente pass textbox --> //div[@style='display: block;']//input[@placeholder='C
 new pass textbox --> //div[@style='display: block;']//input[@placeholder='New password']
 save button -->  //div[@class='btns leading-none']//button[text()='Save']*/
 
+    public CheckBox deleteCheckBoxAccount = new CheckBox(By.xpath("//input [@id='check-account']"));
+
+    public CheckBox deleteCheckBoxData = new CheckBox(By.xpath("//input [@id='check-data']"));
+    public Button deleteConfirmButton = new Button(By.xpath("//button[text()='Confirm']"));
+    public TextBox deletePasswordTextBox = new TextBox(By.xpath("//input[@id='password-input']"));
+
+    public Button deleteButton = new Button(By.xpath("//a[text()='Delete Account']"));
     public Button doneButton = new Button(By.xpath("//button[text()='Done']"));
 
     public Button accountSecurity = new Button(By.xpath("//span[text()='Account and Security']"));
