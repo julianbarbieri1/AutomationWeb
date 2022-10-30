@@ -13,21 +13,18 @@ public class TickTickChangePassTest extends TestBaseTickTick{
     String pass = "Julian1234";
     String pass1 ="Julian1234";
     String pass2 ="123456";
+    String user = getAlphaNumericString(6)+"@gmail.com";
 
-    String item = "item "+new Date().getTime();
-
-    /*String user = getAlphaNumericString(6)+"@gmail.com";
-    String password = getAlphaNumericString(6);*/
 
     @Test
     public void verifyChangePasswordTest() throws InterruptedException {
 
-/*
+
         //CREATE NEW ACCOUNT
         mainPage.signUpForFreeButton.click();
 
         registerPage.nicknameTextBox.addText(name);
-        registerPage.emailTextBox.addText(email);
+        registerPage.emailTextBox.addText(user);
         registerPage.passTextBox.addText(pass1);
         registerPage.signUpButton.click();
 
@@ -35,22 +32,13 @@ public class TickTickChangePassTest extends TestBaseTickTick{
 
         homePage.logoUser.waitVisibility();
         Assertions.assertTrue(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude registrar el usuario");
-        */
-
-        //INICIAR SESION
-
-        mainPage.signInButton.click();
-
-        loginPage.emailTextBox.addText(email);
-        loginPage.passTextBox.addText(pass2);
-        loginPage.signInButton.click();
-
-        homePage.logoUser.waitClickable();
-        Assertions.assertTrue(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude iniciar sesion");
-
 
         //GO TO SETTINGS
+        //Thread.sleep(2000);
+        homePage.skipButton.click();
+        //Thread.sleep(2000);
         homePage.logoUser.click();
+        //Thread.sleep(2000);
         homePage.settingsButton.click();
 
         //CHANGE PASSWORD
@@ -71,7 +59,7 @@ public class TickTickChangePassTest extends TestBaseTickTick{
 
         mainPage.signInButton.click();
 
-        loginPage.emailTextBox.addText(email);
+        loginPage.emailTextBox.addText(user);
         loginPage.passTextBox.addText(pass2);
         loginPage.signInButton.click();
 

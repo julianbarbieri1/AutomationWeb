@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test;
 
 public class TickTickLoginTest extends TestBaseTickTick {
 
-    String email="j@j.com";
-    String pass ="Julian1234";
+    String email="juli123@juli123.com";
+    String pass ="juli123";
 
     @Test @Order(1)
     public void verifyLoginTest() throws InterruptedException {
 
         mainPage.signInButton.click();
-
         loginPage.emailTextBox.addText(email);
         loginPage.passTextBox.addText(pass);
         loginPage.signInButton.click();
@@ -32,14 +31,14 @@ public class TickTickLoginTest extends TestBaseTickTick {
         loginPage.signInButton.click();
 
         homePage.logoUser.waitClickable();
-        Assertions.assertTrue(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude iniciar sesion");
+        Assertions.assertTrue(homePage.logoUser.isControlDisplayed(), "ERROR, no se puede iniciar sesion");
 
         //LOG OUT
 
         homePage.logoUser.click();
         homePage.logOut.click();
 
-        Assertions.assertFalse(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude cerrar sesion");
+        Assertions.assertFalse(homePage.logoUser.isControlDisplayed(), "ERROR, no se puede cerrar sesion");
 
     }
 

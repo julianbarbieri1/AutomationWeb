@@ -5,32 +5,36 @@ import org.junit.jupiter.api.Test;
 
 public class TickTickHabitTest extends TestBaseTickTick {
 
-    String email = "j@j.com";
-    String pass2 = "123456";
-
-    String habit = "cjbd";
-
+    String name = "Julian";
+    String user = getAlphaNumericString(6)+"@gmail.com";
+    String password = getAlphaNumericString(6);
+    String habit = getAlphaNumericString(6);
     @Test
     public void verifyCreateHabitTest() throws InterruptedException {
 
-        //inicio sesion
-        mainPage.signInButton.click();
+        //CREATE NEW ACCOUNT
+        mainPage.signUpForFreeButton.click();
 
-        loginPage.emailTextBox.addText(email);
-        loginPage.passTextBox.addText(pass2);
-        loginPage.signInButton.click();
+        registerPage.nicknameTextBox.addText(name);
+        registerPage.emailTextBox.addText(user);
+        registerPage.passTextBox.addText(password);
+        registerPage.signUpButton.click();
 
-        homePage.logoUser.waitClickable();
-        Assertions.assertTrue(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude iniciar sesion");
+        //verificacion
+
+        homePage.logoUser.waitVisibility();
+        Assertions.assertTrue(homePage.logoUser.isControlDisplayed(), "ERROR, no se pude registrar el usuario");
 
         //go to habits
-
+        homePage.skipButton.click();
         homePage.habitButton.click();
+
+        //create habit
         habitSection.addHabit.click();
         habitSection.addHabitTextBox.addText(habit);
         habitSection.saveButton.click();
 
         Assertions.assertTrue(habitSection.habitExist(habit), "ERROR, no se pudo crear el habito");
-        Thread.sleep(3000);
+
     }
 }
