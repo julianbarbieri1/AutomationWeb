@@ -16,7 +16,7 @@ public class AccountTest extends TestBaseJuiceShop{
         String answer = "soledad";
 
         //REGISTER
-        mainPage.popUp1.click();
+        mainPage.popUpWelcome.click();
         mainPage.accountButton.click();
         mainPage.logginButton.click();
         loginPage.notYetCustomerButton.click();

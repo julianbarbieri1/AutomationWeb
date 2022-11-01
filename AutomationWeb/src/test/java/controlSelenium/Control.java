@@ -1,5 +1,6 @@
 package controlSelenium;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,11 +14,18 @@ public class Control {
 
     protected By locator;
     protected WebElement control;
-
+    protected String controlName; // reflection
     public Control (By locator){
         this.locator=locator;
     }
+    @Step("{0}")
+    public void step(String action){}
 
+
+    public Control (By locator, String controlName){
+        this.locator=locator;
+        this.controlName=controlName;
+    }
     protected void findControl(){
         control= Session.getInstance().getBrowser().findElement(this.locator);
     }
@@ -31,6 +39,7 @@ public class Control {
     public void click(){
         this.findControl();
         control.click();
+        this.step("Click on "+controlName);
     }
     public void checkSlectable(By element, WebDriver driver) throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -39,14 +48,17 @@ public class Control {
     public boolean isControlDisplayed(){
         try {
             this.findControl();
+            this.step("Check the "+controlName+" is displayed: True");
             return control.isDisplayed();
         }catch (Exception e){
+            this.step("Check the "+controlName+" is displayed: false");
             return false;
         }
     }
 
     public String getText(){
         this.findControl();
+        this.step("Get Text from "+controlName+", the value is: "+control.getText());
         return control.getText();
     }
 

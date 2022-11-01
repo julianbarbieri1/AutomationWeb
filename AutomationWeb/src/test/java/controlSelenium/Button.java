@@ -10,4 +10,7 @@ public class Button extends Control{
         this.findControl();
         return this.control.getAttribute(value);
     }
+    public Button(By locator, String controlName) {
+        super(locator, controlName);
+    }
 }

@@ -30,6 +30,7 @@ public class TickTickHabitTest extends TestBaseTickTick {
         homePage.habitButton.click();
 
         //create habit
+        habitSection.addHabit.waitClickable();
         habitSection.addHabit.click();
         habitSection.addHabitTextBox.addText(habit);
         habitSection.saveButton.click();

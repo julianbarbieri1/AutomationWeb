@@ -36,6 +36,7 @@ public class TickTickLoginTest extends TestBaseTickTick {
         //LOG OUT
 
         homePage.logoUser.click();
+        //homePage.logOut.waitClickable();
         homePage.logOut.click();
 
         Assertions.assertFalse(homePage.logoUser.isControlDisplayed(), "ERROR, no se puede cerrar sesion");

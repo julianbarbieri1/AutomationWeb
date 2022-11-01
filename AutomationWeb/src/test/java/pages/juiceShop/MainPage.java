@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class MainPage {
 
-    public Button popUp1 = new Button(By.xpath("//span[text()='Dismiss']"));
+    public Button popUpWelcome = new Button(By.xpath("//button[@class='mat-focus-indicator close-dialog mat-raised-button mat-button-base mat-primary ng-star-inserted']"));
 
     public Button accountButton = new Button(By.id("navbarAccount"));
 

@@ -2,6 +2,7 @@ package pages.ticktick;
 
 import controlSelenium.Button;
 import controlSelenium.CheckBox;
+import controlSelenium.Label;
 import controlSelenium.TextBox;
 import org.openqa.selenium.By;
 
@@ -32,4 +33,6 @@ save button -->  //div[@class='btns leading-none']//button[text()='Save']*/
     public TextBox newPassTextbox = new TextBox(By.xpath("//div[@style='display: block;']//input[@placeholder='New password']"));
 
     public Button saveButton = new Button(By.xpath("//div[@class='btns leading-none']//button[text()='Save']"));
+
+    public Label settingsLabel = new Label(By.xpath("//h5[@class='line-left text-[28px] font-medium leading-[40px]']"));
 }
