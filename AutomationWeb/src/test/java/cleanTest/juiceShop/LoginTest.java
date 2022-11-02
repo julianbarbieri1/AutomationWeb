@@ -21,8 +21,8 @@ public class LoginTest extends TestBaseJuiceShop{
         //MAIN PAGE
         mainPage2.popUpWelcome.waitClickable();
         mainPage2.popUpWelcome.click();
-        //mainPage2.accountNavBarButton.waitClickable();
-        //mainPage2.accountNavBarButton.click();
+        mainPage2.accountNavBarButton.waitClickable();
+        mainPage2.accountNavBarButton.click();
         mainPage2.loginNavBarButton.click();
 
         Thread.sleep(3000);

@@ -1,9 +1,9 @@
 package controlSelenium;
 
+import cleanTest.todoLy.TestBaseTodoLy;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import singletonSession.Session;
@@ -37,6 +37,7 @@ public class Control {
      *
      */
     public void click(){
+
         this.findControl();
         control.click();
         this.step("Click on "+controlName);
@@ -56,11 +57,14 @@ public class Control {
         }
     }
 
-    public String getText(){
+    public String getText() {
+
         this.findControl();
-        this.step("Get Text from "+controlName+", the value is: "+control.getText());
+        this.step("Get Text from " + controlName + ", the value is: " + control.getText());
         return control.getText();
+
     }
+
 
     public void waitVisibility(){
         WebDriverWait wait = new WebDriverWait(Session.getInstance().getBrowser(), Duration.ofSeconds(10));

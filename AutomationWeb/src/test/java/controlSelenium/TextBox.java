@@ -1,5 +1,6 @@
 package controlSelenium;
 
+import cleanTest.todoLy.TestBaseTodoLy;
 import org.openqa.selenium.By;
 
 public class TextBox extends Control {
@@ -28,10 +29,12 @@ public class TextBox extends Control {
     }
 
     public void setText(String value){
+
         this.findControl();
         this.step("Set on control: "+controlName+" the value: ["+value+"]");
         this.control.clear();
         this.control.sendKeys(value);
+
     }
 }
 
