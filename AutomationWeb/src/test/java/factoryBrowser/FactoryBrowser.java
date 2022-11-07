@@ -9,6 +9,9 @@ public class FactoryBrowser {
             case "chrome":
                 browser= new Chrome();
                 break;
+            case "docker":
+                browser= new BrowserDocker();
+                break;
             case "cloud":
                 browser= new Cloud();
                 break;

@@ -1,9 +1,6 @@
 package basicSelenium;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -35,6 +32,7 @@ public class CRUDProjectTest {
     }
 
     @Test
+    @Disabled
     public void crudTest() throws InterruptedException {
         // click login
         driver.findElement(By.xpath("//img[@src='/Images/design/pagelogin.png']")).click();

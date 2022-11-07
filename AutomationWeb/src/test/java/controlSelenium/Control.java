@@ -3,6 +3,7 @@ package controlSelenium;
 import cleanTest.todoLy.TestBaseTodoLy;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import io.qameta.allure.model.TestResult;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -62,7 +63,6 @@ public class Control {
         this.findControl();
         this.step("Get Text from " + controlName + ", the value is: " + control.getText());
         return control.getText();
-
     }
 
 

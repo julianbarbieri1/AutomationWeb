@@ -2,6 +2,7 @@ package basicJunit;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class BasicJunit {
@@ -20,6 +21,7 @@ public class BasicJunit {
         System.out.println("Test 1");
     }
     @Test
+    @Disabled
     public void verifySomething2(){
         System.out.println("Test 2");
     }

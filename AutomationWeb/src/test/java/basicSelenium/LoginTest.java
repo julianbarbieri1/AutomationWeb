@@ -1,9 +1,6 @@
 package basicSelenium;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,6 +21,7 @@ public class LoginTest {
     }
 
     @Test
+    @Disabled
     public void loginTodoLyTest() throws InterruptedException {
 
         // click login

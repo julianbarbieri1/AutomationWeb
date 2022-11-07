@@ -4,11 +4,23 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import utils.GetProperties;
 
-public class LoginTest extends TestBaseTodoLy{
+public class LoginParameterTest extends TestBaseTodoLy{
 
-    @Test
+    //@Test
+    @ParameterizedTest
+    @CsvSource(
+            {
+                    "enzo222@gmail.com,enzo222",
+                    "fhr@fhr.com,12345",
+                    "ngroup001@ng.com,12345"
+            }
+    )
+
+
     @DisplayName("verify Login Successfully")
     @Description("Test login")
     @Owner("Julian")
@@ -19,10 +31,10 @@ public class LoginTest extends TestBaseTodoLy{
     @Feature("Authentication")
     @Story("Story login")
     @Severity(SeverityLevel.CRITICAL)
-    public void verifyLoginSuccessfully(){
+    public void verifyLoginSuccessfully(String user, String pass){
         mainPage.loginButton.click();
-        loginModal.emailTextBox.setText(GetProperties.getInstance().getUser());
-        loginModal.passwordTextBox.setText(GetProperties.getInstance().getPwd());
+        loginModal.emailTextBox.setText(user);
+        loginModal.passwordTextBox.setText(pass);
         loginModal.loginButton.click();
         Assertions.assertTrue(menuSection.logoutButton.isControlDisplayed(),
                 "ERROR login was not successfully");
